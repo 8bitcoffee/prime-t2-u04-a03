@@ -16,10 +16,18 @@
     <section id="addKoala">
       <h2>Add Koala</h2>
       <form onSubmit="saveKoala(event)">
-        <input type="text" id="nameIn" value="" placeholder="Name">
-        <input type="text" id="ageIn" value="" placeholder="Age">
-        <input type="text" id="genderIn" value="" placeholder="Gender">
-        <input type="text" id="readyForTransferIn" value="" placeholder="Transfer">
+        <input required type="text" id="nameIn" value="" placeholder="Name">
+        <input required type="number" id="ageIn" value="" placeholder="Age" size="4" maxlength="4">
+          <label for="genderIn">Gender</label>
+            <select name="genderIn" id="genderIn">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          <label for="transferIn">Ready To Transfer</label>
+            <select name="transferIn" id="readyForTransferIn">
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+            </select>
         <input type="text" id="notesIn" value="" placeholder="Notes">
         <button id="addButton">Add Koala</button>
       </form>
