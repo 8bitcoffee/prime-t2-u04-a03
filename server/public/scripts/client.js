@@ -22,8 +22,8 @@ function getKoalas(){
     viewKoalas.innerHTML = viewKoalasStr;
     
     for (let koala of koalas) {
-
-      if(koala.readyToTransfer == 'N'){
+      console.log(koala.ready_to_transfer);
+      if(koala.ready_to_transfer == false){
         viewKoalasStr += `
           <tr>
             <td>${koala.name}</td>
@@ -107,17 +107,18 @@ function readyKoala(id) {
   }).catch((error) => {
     console.log(error);
     alert(`Could not update Ready to Transfer ${id}`)
-  })
+  });
 }
 
 // DELETE REQUEST
 function removeKoala(id){
-  console.log('Koala to remove: ', id);
-  axios.delete(`/koalas/${id}`).then(() => {
-    console.log('You successfully terminated that koala');
-    getKoalas();
-  }).catch((error) => {
-    console.log(error);
-    alert(`your koala was not deleted`);
-  })
-}
+  if (window.confirm('Are you sure you want to remove this poor innocent sweet koala? This action cannot be undone')) {
+    console.log('Koala to remove: ', id);
+    axios.delete(`/koalas/${id}`).then(() => {
+      console.log('You successfully terminated that koala');
+      getKoalas();
+    }).catch((error) => {
+      console.log(error);
+      alert(`your koala was not deleted`);
+    });
+}}
